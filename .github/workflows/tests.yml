@@ -1,0 +1,35 @@
+name: tests
+
+on: [push, pull_request]
+
+jobs:
+  equivalencia:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # 22.18 es el piso declarado en package.json (la primera que ejecuta
+        # TypeScript sin flag). 24 es la actual. Si el piso deja de ser cierto,
+        # este job lo grita en vez de que lo descubra quien clone el repo.
+        node: ['22.18.0', '24']
+
+    name: node ${{ matrix.node }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      # No hay paso de instalación. No es un olvido: el repositorio no tiene
+      # dependencias, y que este workflow pase sin un `npm install` es la prueba.
+
+      - name: Equivalencia — campaña (12.000+ fechas contra las 13 copias)
+        run: node test/campania.ts
+
+      - name: Equivalencia — formato (contra las 31 copias)
+        run: node test/formato.ts
+
+      - name: Demo de punta a punta
+        run: node demo/correr.ts

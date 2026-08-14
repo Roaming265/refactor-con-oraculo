@@ -1,5 +1,7 @@
 # Unificar lógica duplicada sin cambiar el comportamiento
 
+[![tests](https://github.com/Roaming265/refactor-con-oraculo/actions/workflows/tests.yml/badge.svg)](https://github.com/Roaming265/refactor-con-oraculo/actions/workflows/tests.yml)
+
 La misma cifra tipeada en el mismo formulario daba **13905** en una pantalla y **1390,5**
 en otra. Las dos parecían bien. Ninguna tiraba un error.
 
@@ -264,7 +266,6 @@ Lo que falta, en orden de importancia:
   pasarla como parámetro y decidir de quién es el "hoy" que importa.
 - **Los tests no usan framework.** Son scripts que imprimen y salen con código de error. Es
   suficiente para lo que hacen y evita la dependencia, pero no se integran con nada.
-- **No hay integración continua.** Los tests se corren a mano.
 
 ### Sobre el código publicado
 
