@@ -1,0 +1,16 @@
+{
+  "name": "refactor-con-oraculo",
+  "version": "1.0.0",
+  "description": "Unificacion de logica duplicada en produccion, verificada con un test de equivalencia contra el codigo anterior.",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "test": "node test/formato.ts && node test/campania.ts",
+    "test:formato": "node test/formato.ts",
+    "test:campania": "node test/campania.ts",
+    "demo": "node demo/correr.ts"
+  }
+}
